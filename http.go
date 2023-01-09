@@ -35,6 +35,16 @@ func NewHttp(args ...Object) Object {
 	}
 }
 
+func (h *HttpObject) Call(method string, args ...Object) Object {
+	switch method {
+	case "listen":
+		return h.Listen(args...)
+	case "handle":
+		return h.Handle(args...)
+	}
+	return NewErrorFormat("method %s not exists", method)
+}
+
 func (h *HttpObject) Listen(args ...Object) Object {
 	portStr := &String{Value: "port"}
 	port := "8080"
