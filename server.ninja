@@ -1,0 +1,9 @@
+var http = plugin("http");
+
+var server = http.NewHttp({"port":"8080"});
+
+server.handle("/", function() {
+    puts("Hello");
+});
+
+server.Listen();
